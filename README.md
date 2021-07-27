@@ -30,9 +30,58 @@ Tutorial: [Delhi send sms sample and tutorial](https://ozeki-sms-gateway.com/p_8
 To use the code you need to import the Ozeki.Libs.Rest sms library. This sms library is also included in this repository with it's full source code. After the library is imported with the using statement, you need to define the username, password and the api url. You can create the username and password when you install an HTTP API user in your Ozeki SMS Gateway system.
 The URL is the default http api URL to connect to your SMS gateway. If you run the SMS gateway on the same computer where your Delphi code is running, you can use 127.0.0.1 as the ip address. You need to change this if you install the sms gateway on a different computer (or mobile phone).
 
+### How to use the Ozeki.Libs.Rest unit
+
+In order to use the __Ozeki.Libs.Rest unit__ in your own project, you need to place the __Ozeki.Libs.Rest.pas__ file in your project.
+After you've placed these two files _(what you can download from this github repository, together with 5 example projects)_, you can import it with this line:
+
+```pascal
+uses Ozeki.Libs.Rest in 'Ozeki.Libs.Rest.pas';
+```
+When you imported the header file, you are ready to use the __Ozeki.Libs.Rest unit__, to send, mark, delete and receive SMS messages.
+
+#### Creating a Configuration
+
+To send your SMS message to the built in API of the __Ozeki SMS Gateway__, your client application needs to know the details of your __Gateway__ and the __http_user__.
+We can define a __Configuration__ instance with these lines of codes in Delphi:
+
+```pascal
+var configuration : Ozeki.Libs.Rest.Configuration := Ozeki.Libs.Rest.Configuration.Create;
+configuration.Username = 'http_user';
+configuration.Password = 'qwe123';
+configuration.ApiUrl = 'http://127.0.0.1:9509/api';
 ```
 
+#### Creating a Message
+
+After you have initialized your configuration object you can continue by creating a Message object.
+A message object holds all the needed data for message what you would like to send.
+In Delphi we create a __Message__ instance with the following lines of codes:
+
+```pascal
+var msg : Ozeki.Libs.Rest.Message := Ozeki.Libs.Rest.Message.Create;
+msg.ToAddress = '+36201111111';
+msg.Text = 'Hello world!';
 ```
+
+#### Creating a MessageApi
+
+You can use the __MessageApi__ class of the __Ozeki.Libs.Rest unit__ to create a __MessageApi__ object which has the methods to send, delete, mark and receive SMS messages from the Ozeki SMS Gateway.
+To create a __MessageApi__, you will need these lines of codes and a __Configuration__ instance.
+
+```pascal
+var api : Ozeki.Libs.Rest.MessageApi := Ozeki.Libs.Rest.MessageApi.Create(configuration);
+```
+
+After everything is ready you can begin with sending the previously created __Message__ object:
+
+```pascal
+var result : Ozeki.Libs.Rest.MessageSendResult := api.SendMessage( msg );
+
+Writeln(result.ToString);
+```
+
+After you have done all the steps, you check the Ozeki SMS Gateway and you will see the message in the _Sent_ folder of the __http_user__.
 
 ## How to send sms through your Android mobile phone
 
