@@ -1,0 +1,84 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{37285F99-EECB-416B-ACFE-49FB33D24E66}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="DeleteSms.delphi\DeleteSms.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="ReceiveSms.delphi\ReceiveSms.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="SendMultipleSms.delphi\SendMultipleSms.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="SendScheduledSms.delphi\SendScheduledSms.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="SendSms.delphi\SendSms.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="DeleteSms">
+        <MSBuild Projects="DeleteSms.delphi\DeleteSms.dproj"/>
+    </Target>
+    <Target Name="DeleteSms:Clean">
+        <MSBuild Projects="DeleteSms.delphi\DeleteSms.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DeleteSms:Make">
+        <MSBuild Projects="DeleteSms.delphi\DeleteSms.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ReceiveSms">
+        <MSBuild Projects="ReceiveSms.delphi\ReceiveSms.dproj"/>
+    </Target>
+    <Target Name="ReceiveSms:Clean">
+        <MSBuild Projects="ReceiveSms.delphi\ReceiveSms.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ReceiveSms:Make">
+        <MSBuild Projects="ReceiveSms.delphi\ReceiveSms.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="SendMultipleSms">
+        <MSBuild Projects="SendMultipleSms.delphi\SendMultipleSms.dproj"/>
+    </Target>
+    <Target Name="SendMultipleSms:Clean">
+        <MSBuild Projects="SendMultipleSms.delphi\SendMultipleSms.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SendMultipleSms:Make">
+        <MSBuild Projects="SendMultipleSms.delphi\SendMultipleSms.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="SendScheduledSms">
+        <MSBuild Projects="SendScheduledSms.delphi\SendScheduledSms.dproj"/>
+    </Target>
+    <Target Name="SendScheduledSms:Clean">
+        <MSBuild Projects="SendScheduledSms.delphi\SendScheduledSms.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SendScheduledSms:Make">
+        <MSBuild Projects="SendScheduledSms.delphi\SendScheduledSms.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="SendSms">
+        <MSBuild Projects="SendSms.delphi\SendSms.dproj"/>
+    </Target>
+    <Target Name="SendSms:Clean">
+        <MSBuild Projects="SendSms.delphi\SendSms.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SendSms:Make">
+        <MSBuild Projects="SendSms.delphi\SendSms.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="DeleteSms;ReceiveSms;SendMultipleSms;SendScheduledSms;SendSms"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="DeleteSms:Clean;ReceiveSms:Clean;SendMultipleSms:Clean;SendScheduledSms:Clean;SendSms:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="DeleteSms:Make;ReceiveSms:Make;SendMultipleSms:Make;SendScheduledSms:Make;SendSms:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
