@@ -47,9 +47,9 @@ We can define a __Configuration__ instance with these lines of codes in Delphi:
 
 ```pascal
 var configuration : Ozeki.Libs.Rest.Configuration := Ozeki.Libs.Rest.Configuration.Create;
-configuration.Username = 'http_user';
-configuration.Password = 'qwe123';
-configuration.ApiUrl = 'http://127.0.0.1:9509/api';
+configuration.Username := 'http_user';
+configuration.Password := 'qwe123';
+configuration.ApiUrl := 'http://127.0.0.1:9509/api';
 ```
 
 #### Creating a Message
@@ -60,8 +60,8 @@ In Delphi we create a __Message__ instance with the following lines of codes:
 
 ```pascal
 var msg : Ozeki.Libs.Rest.Message := Ozeki.Libs.Rest.Message.Create;
-msg.ToAddress = '+36201111111';
-msg.Text = 'Hello world!';
+msg.ToAddress := '+36201111111';
+msg.Text := 'Hello world!';
 ```
 
 #### Creating a MessageApi
