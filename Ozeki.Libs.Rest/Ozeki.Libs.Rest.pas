@@ -1,6 +1,5 @@
 unit Ozeki.Libs.Rest;
 
-// This is what happens when the repository gets updated.
 
 interface
 
